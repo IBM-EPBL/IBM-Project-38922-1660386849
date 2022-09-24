@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Registration Form </title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body >
+<h1>Registration Form</h1>
+<form  name="myform" method="post">
+	<div><label for="fname">Name:</label>
+    <input type="text" id="fname" name="fname"></div>
+    <div><label for="lname">Email:</label>
+    <input type="text" id="lname" name="lname"></div>
+    <div><label for="mob">Mobile:</label>
+    <input type="text" id="mob" name="mob"></div>
+    <div><label for="city">City:</label>
+        <select name="city"  id="city">
+            <option value="select">Select</option>
+            <option value="Coimbatore">Coimbatore</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Mumbai">Mumbai</option>
+          </select></div>
+    <div><label for="state">State:</label>
+        <select name="state"  id="state">
+            <option value="select">Select</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+          </select></div>
+    <div><label for="count">Country:</label>
+        <select name="country"  id="count">
+            <option value="select">Select</option>
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="England">England</option>
+          </select></div>
+    <button name="button" type="submit" value="OK">Submit</button>  
+</form>
+</body>
+</html>
