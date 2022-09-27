@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/signUp.css') }}" />
+    
+    <script type = "text/javascript">
+          // alert("{% for message in messages %}{{message}}{% endfor %}");
+         // Form validation code will come here.
+         function validate()
+          {
+            if( document.myForm.first_name.value == "" ) {
+               alert( "Please provide your First name!" );
+               document.myForm.first_name.focus() ;
+               return false;
+            }
+            if( document.myForm.last_name.value == "" ) {
+               alert( "Please provide your Last name!" );
+               document.myForm.last_name.focus() ;
+               return false;
+            }
+            if( document.myForm.email.value == "" ) {
+               alert( "Please provide your Email!" );
+               document.myForm.email.focus() ;
+               return false;
+            }
+            if( document.myForm.password.value == "" ) {
+               alert( "Please provide your Password!" );
+               document.myForm.password.focus() ;
+               return false;
+            }
+            if( document.myForm.password1.value == "" ) {
+               alert( "This Field cannot be empty" );
+               document.myForm.password1.focus() ;
+               return false;
+            }
+            if( document.myForm.password.value != document.myForm.password1.value) {
+               alert( "Passwords does not match" );
+               
+               return false;
+            }
+            return( true );
+         }
+         
+   </script>
+   
+  </head>
+  <body>
+    <div class="signUp">
+      <div class="container-well container-shadow">
+        <div class="container  flex-container">
+          <div class="left-content d-flex flex-column">
+            <div class="image">
+              <img src="../static/assets/signup1.png" alt="signup-image">
+            </div>
+          </div>
+          <div class="form mt-4 mb-4">
+            <form action = "login" name = "myForm" onsubmit = "return(validate());">
+              
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="mb-3">
+                    <label class="form-label" >First Name</label>
+                    <input type="text" class="form-control" name="first_name">
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mb-3">
+                      <label class="form-label" >Last Name</label>
+                      <input type="text" class="form-control" name="last_name">
+                    </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Email</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Confirm Password</label>
+                <input type="password" class="form-control" name="password1">
+              </div>
+              <div class="dropdown mb-3">
+                <label class="form-label">User Type</label>
+                <button class="btn btn-secondary dropdown-toggle d-block mb-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Select
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  
+                  <li><a class="dropdown-item" href="#">Admin</a></li>
+                  <li><a class="dropdown-item" href="#">Others</a></li>
+                </ul>
+              </div>
+              
+              <input type="submit" class="btn btn-blue mt-2" value="Sign Up">
+             
+              
+            </form>
+            <br>
+            <div class="d-flex flex-row">
+              Already have an account ?
+              <div>
+                <a class="ms-1" href="./login">Log In</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
