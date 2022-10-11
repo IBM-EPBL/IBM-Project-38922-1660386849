@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+:root{
+    --primary: #34ACE0;
+    --primary-shadow: rgba(52, 172, 224 , 0.25);
+}
+
+body {
+    background-color: var(--primary-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.image{
+    padding-top: 8%;
+}
+.logo {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    color: var(--primary);
+    margin: 0;
+    display: inline-block;
+    font-size: 1.75rem;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+.logo div {
+    background-color: var(--primary);
+    margin-right: 5px;
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo span {
+    color: white;
+    font-size: 2.75rem;
+    transform: rotate(-15deg);
+    position: relative;
+    top: -3px;
+    left: -1.5px;
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: min(20px, 25px);
+  margin-bottom: min(20px, 25px);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-well {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 550px;
+  width: 900px;
+  border-radius: 0 35px 0 35px;
+}
+
+.container-shadow {
+  box-shadow: 0 0 100px 0 var(--primary);
+}
+
+.left-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.form {
+  align-items: center;
+  width: 50%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.form a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: 0.5s;
+}
+
+.form a:hover {
+  color: black;
+}
+
+.btn-white {
+    color: var(--primary);
+    box-shadow: 0 0 20px 0 var(--primary-shadow);
+    transition: 1s;
+}
+
+.btn-blue {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 20px 0 var(--primary-shadow);
+    transition: 1s;
+}
+
+@media (max-width: 1199px) {
+  .container-well {
+    width: 700px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container-well {
+    border-radius: 20px;
+  }
+  .image {
+    display: none;
+  }
+  .left-content {
+    width: 100%;
+  }
+  .form {
+    width: 100%
+  }
+  .container-well {
+    width: 90%;
+    height: 90%;
+  }
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 330px){
+  .form div {
+    flex-direction: column !important;
+  }
+}

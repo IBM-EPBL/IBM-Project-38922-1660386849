@@ -17,14 +17,14 @@
         </div>
       </div>
       <div class="form mt-4 mb-4">
-        <form action="./home">
+        <form action = "{{url_for('logIn')}}" method = "POST">
           <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" class="form-control">
+            <input type="email" class="form-control" name="email">
           </div>
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" name="password">
           </div>
           <button type="submit" class="btn btn-blue mt-2">Log In</button>
         </form>
@@ -35,6 +35,13 @@
             <a class="ms-1" href="./">Sign Up</a>
           </div>
         </div>
+        {% with messages = get_flashed_messages() %}  
+          {% if messages %}  
+             {% for message in messages %}  
+                <p style="color: red;">{{ message }}</p>  
+             {% endfor %}  
+          {% endif %}  
+        {% endwith %}  
       </div>
     </div>
   </div>
