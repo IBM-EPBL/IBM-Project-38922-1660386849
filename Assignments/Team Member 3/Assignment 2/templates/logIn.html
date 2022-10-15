@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/logIn.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn">
+  <div class="container-well container-shadow">
+    <div class="container  flex-container">
+      <div class="left-content d-flex flex-column">
+        <div class="image">
+          <img src="../static/assets/login1.png" alt="login-image">
+        </div>
+      </div>
+      <div class="form mt-4 mb-4">
+        <form action = "{{url_for('logIn')}}" method = "POST">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password">
+          </div>
+          <button type="submit" class="btn btn-blue mt-2">Log In</button>
+        </form>
+        <br>
+        <div class="d-flex flex-row">
+          Don't have an account ?
+          <div>
+            <a class="ms-1" href="./">Sign Up</a>
+          </div>
+        </div>
+        {% with messages = get_flashed_messages() %}  
+          {% if messages %}  
+             {% for message in messages %}  
+                <p style="color: red;">{{ message }}</p>  
+             {% endfor %}  
+          {% endif %}  
+        {% endwith %}  
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
