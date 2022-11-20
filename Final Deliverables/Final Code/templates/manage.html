@@ -1,0 +1,34 @@
+
+<html>
+<head>
+  <title>Manage</title>
+</head>
+</html>
+
+{% extends 'base.html' %}
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/logIn.css') }}" />
+{% endblock %}
+
+{% block body %}
+<table>
+  <tr>
+      <td>Category</td>
+      <td>Supplier</td>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Quantity</td>
+  </tr>
+  {% for item in sales %}
+  <tr>
+      <td>{{item[0]}}</td>
+      <td>{{item[1]}}</td>
+      <td>{{item[2]}}</td>
+      <td>{{item[3]}}</td>
+      <td>{{item[4]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

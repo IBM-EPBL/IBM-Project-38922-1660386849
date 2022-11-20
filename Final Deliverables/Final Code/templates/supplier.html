@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title>Supplier</title>
+  <script>
+    function newFunction(){
+      var element = document.getElementById(" form_id ");
+       element.reset()
+    }
+    
+    function myFunction() {
+      alert("Supplier Information added!");
+    }
+    function validate()
+   {
+     if( document.myForm.invoice_no.value == "" ) {
+        alert( "Please provide Invoice number!" );
+        document.myForm.invoice_no.focus() ;
+        return false;
+     }
+     if( document.myForm.supplier_name.value == "" ) {
+        alert( "Please provide Supplier's name!" );
+        document.myForm.supplier_name.focus() ;
+        return false;
+     }
+     if( document.myForm.contact.value == "" ) {
+        alert( "Please provide Contact details!" );
+        document.myForm.contact.focus() ;
+        return false;
+     }
+     if( document.myForm.description.value == "" ) {
+        alert( "Please provide description" );
+        document.myForm.description.focus() ;
+        return false;
+     }
+     return( true );
+    }
+ </script>
+</head>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/supplier.css') }}" />
+
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn row">
+  <div class="container-well container-shadow col-xl-3">  
+    <div class="container nike buttons">
+        <a class="btn-hover color-1" href="supplier">SUPPLIER</a>
+        <a class="btn-hover color-1" href="category">CATEGORY</a>
+        <a class="btn-hover color-1" href="product">PRODUCT</a>
+        <a class="btn-hover color-1" href="adminSale">SALE</a>
+        <a class="btn-hover color-1" href="aboutus">ABOUT US</a>
+        <a class="btn-hover color-1" href="logIn">EXIT</a>
+    </div>
+  </div>
+  <div class="box col" style="font-size:x-large">
+    <h1 class="text-primary" style="padding-bottom: 150px; font-family: fantasy;">SUPPLIER PAGE</h1>
+    <form action = "{{url_for('supplier')}}"style="padding-bottom: 180px;" name = "myForm" method = "POST" id=" form_id " onsubmit = "return(validate());">
+        <div class="mb-3 col-4">
+            <label class="form-label" >Invoice No.</label>
+            <input type="text" class="form-control" name="invoice_no">
+        </div>
+        <div class="mb-3 col-4">
+            <label class="form-label" >Supplier Name</label>
+            <input type="text" class="form-control" name="supplier_name">
+        </div>
+        <div class="mb-3 col-4">
+          <label class="form-label" >Contact</label>
+          <input type="text" class="form-control" name="contact">
+        </div>
+        <div class="mb-3 col-4">
+            <label class="form-label" >Description</label>
+            <textarea class="form-control" id="description" name = "description" rows="3"></textarea>
+        </div>
+        <input style="font-size:large" type="submit" class="btn btn-blue mt-2" value="Save">
+        <input style="font-size:large" type="button" class="btn btn-blue mt-2" value="Clear"  onclick = "newFunction()" >
+        <div> 
+          {% with messages = get_flashed_messages() %}  
+          {% if messages %}  
+             {% for message in messages %}  
+             <p style=" margin-top:30px; color: rgb(5, 2, 65); font-weight: bolder; font-size: larger;">{{ message }}{{ order_price}}</p>  
+             {% endfor %}  
+          {% endif %}  
+        {% endwith %} 
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

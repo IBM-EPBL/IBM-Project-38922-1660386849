@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title>Category</title>
+</head>
+<script>
+  function newFunction(){
+    var element = document.getElementById(" form_id ");
+     element.reset()
+  }
+  
+  function myFunction() {
+    alert("Supplier Information added!");
+  }
+  function validate()
+ {
+   if( document.myForm.category_name.value == "" ) {
+      alert( "Please provide Category name!" );
+      document.myForm.category_name.focus() ;
+      return false;
+   }
+   return( true );
+  }
+</script>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/category.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn row">
+  <div class="container-well container-shadow col-xl-3">  
+    <div class="container nike buttons">
+        <a class="btn-hover color-1" href="supplier">SUPPLIER</a>
+        <a class="btn-hover color-1" href="category">CATEGORY</a>
+        <a class="btn-hover color-1" href="product">PRODUCT</a>
+        <a class="btn-hover color-1" href="adminSale">SALE</a>
+        <a class="btn-hover color-1" href="aboutus">ABOUT US</a>
+        <a class="btn-hover color-1" href="logIn">EXIT</a>
+    </div>
+  </div>
+  <div class="box col" style="font-size:x-large">
+
+    <h1 class="text-primary" style="padding-bottom: 150px; font-family: fantasy;">CATEGORY PAGE</h1>
+    <form action = "{{url_for('category')}}"style="padding-bottom: 180px;" name = "myForm" method = "POST" onsubmit = "return(validate());">
+        <div class="mb-3 col-4">
+            <label class="form-label" >Enter category name</label>
+            <input type="text" class="form-control" name="category_name">
+        </div>
+        
+        <input style="font-size:large" type="submit" class="btn btn-blue mt-2" value="Add" name = "btt">
+        <input style="font-size:large" type="submit" class="btn btn-blue mt-2" value="Delete" name = "btt">
+        <div> 
+          {% with messages = get_flashed_messages() %}  
+          {% if messages %}  
+             {% for message in messages %}  
+             <p style=" margin-top:30px; color: rgb(5, 2, 65); font-weight: bolder; font-size: larger;">{{ message }}{{ order_price}}</p>  
+             {% endfor %}  
+          {% endif %}  
+        {% endwith %} 
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

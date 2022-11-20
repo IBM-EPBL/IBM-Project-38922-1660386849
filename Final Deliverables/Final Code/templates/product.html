@@ -1,0 +1,118 @@
+<html>
+<head>
+  <title>Product</title>
+</head>
+<script>
+    function newFunction(){
+      var element = document.getElementById(" form_id ");
+       element.reset()
+    }
+
+    function validate()
+   {
+     if( document.myForm.prod_id.value == "" ) {
+        alert( "Please provide Product ID!" );
+        document.myForm.prod_id.focus() ;
+        return false;
+     }
+     if( document.myForm.name.value == "" ) {
+        alert( "Please provide Product name!" );
+        document.myForm.name.focus() ;
+        return false;
+     }
+     if( document.myForm.price.value == "" ) {
+        alert( "Please provide Price!" );
+        document.myForm.price.focus() ;
+        return false;
+     }
+     if( document.myForm.quantity.value == "" ) {
+        alert( "Please provide Quantity" );
+        document.myForm.quantity.focus() ;
+        return false;
+     }
+     return( true );
+    }
+
+ </script>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/product.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn row">
+  <div class="container-well container-shadow col-xl-3">  
+    <div class="container nike buttons">
+        <a class="btn-hover color-1" href="supplier">SUPPLIER</a>
+        <a class="btn-hover color-1" href="category">CATEGORY</a>
+        <a class="btn-hover color-1" href="product">PRODUCT</a>
+        <a class="btn-hover color-1" href="adminSale">SALE</a>
+        <a class="btn-hover color-1" href="aboutus">ABOUT US</a>
+        <a class="btn-hover color-1" href="logIn">EXIT</a>
+    </div>
+  </div>
+  <div class="box col" style="font-size:x-large">
+    <h1 class="text-primary" style="padding-bottom: 70px; font-family: fantasy;">PRODUCT PAGE</h1>
+    <form action = "{{url_for('product')}}" style="padding-bottom: 80px;" name = "myForm" id=" form_id " method = "POST" onsubmit = "return(validate());">
+      <div class="mb-3 col-4">
+        <label class="form-label" >Product ID</label>
+        <input type="text" class="form-control" name="prod_id">
+      </div>  
+      <div class="mb-3 col-4">
+            <label for="cate">Category</label><br>
+            <select name="cate" id="cate" style="width: 100%;">
+            {% for item in categ %}
+              <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3 col-4">
+            <label for="supple">Supplier</label><br>
+            <select name="supple" id="supple" style="width: 100%;" >
+            {% for item in supp %}
+              <option value="{{item}}">{{item}}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3 col-4">
+          <label class="form-label" >Product Name</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+        <div class="mb-3 col-4">
+            <label class="form-label" >Price</label>
+            <input type="text" class="form-control" name="price">
+          </div>
+        <div class="mb-3 col-4">
+            <label class="form-label" >Quantity</label>
+            <input type="text" class="form-control" name="quantity">
+        </div>
+        <div class="mb-3 col-4">
+            <label for="st">Status</label><br>
+            <select name="st" id="st" style="width: 100%;">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            
+            </select>
+        </div>
+        <input style="font-size:large" type="submit" class="btn btn-blue mt-2" value="Save" name="btt">
+        <input style="font-size:large" type="submit" class="btn btn-blue mt-2" value="Update" name="btt">
+        <input style="font-size:large" type="button" class="btn btn-blue mt-2" value="Clear"  onclick = "newFunction()" >
+        <div> 
+          {% with messages = get_flashed_messages() %}  
+          {% if messages %}  
+             {% for message in messages %}  
+             <p style=" margin-top:30px; color: rgb(5, 2, 65); font-weight: bolder; font-size: larger;">{{ message }}{{ order_price}}</p>  
+             {% endfor %}  
+          {% endif %}  
+        {% endwith %} 
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
