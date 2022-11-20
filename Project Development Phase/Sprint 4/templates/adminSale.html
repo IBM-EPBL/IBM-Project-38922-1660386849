@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>Admin Sale</title>
+</head>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/adminSale.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn row">
+    <div class="container-well container-shadow col-xl-3">  
+        <div class="container nike buttons">
+            <a class="btn-hover color-1" href="supplier">SUPPLIER</a>
+            <a class="btn-hover color-1" href="category">CATEGORY</a>
+            <a class="btn-hover color-1" href="product">PRODUCT</a>
+            <a class="btn-hover color-1" href="adminSale">SALE</a>
+            <a class="btn-hover color-1" href="aboutus">ABOUT US</a>
+            <a class="btn-hover color-1" href="logIn">EXIT</a>
+        </div>
+      </div>
+  <div class="box col" style="font-size:x-large">
+  
+        <table class="fl-table">
+            <thead>
+              <th>Customer ID</th>
+              <th>Product ID</th>
+              <th>Quantity</th>
+            </thead>
+            <tbody>
+              {% for item in sales %}
+              <tr>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+                <td>{{item[2]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>  
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+<html>
+<head>
+  <title>Home</title>
+</head>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<div class="logIn row">
+  <div class="container-well container-shadow col-xl-3">  
+    <div class="container nike buttons">
+        <a class="btn-hover color-1" href="supplier">SUPPLIER</a>
+        <a class="btn-hover color-1" href="category">CATEGORY</a>
+        <a class="btn-hover color-1" href="product">PRODUCT</a>
+        <a class="btn-hover color-1" href="adminSale">SALE</a>
+        <a class="btn-hover color-1" href="aboutus">ABOUT US</a>
+        <a class="btn-hover color-1" href="logIn">EXIT</a>
+    </div>
+  </div>
+  <div class="box col">
+    <h1 class="text-primary" style="text-align: center; font-family: fantasy;">HOME PAGE</h1>
+    <div class="row1 d-flex justify-content-around">
+      <div class="card border-primary mb-4">
+        <div class="card-body text-primary">
+          <h5 class="card-title text-center">TOTAL SUPPLIER</h5>
+          <div class="content">
+            <div style="font-size: 40px;">{{supple}}</div>
+          </div>  
+        </div>
+      </div>
+      <div class="card border-primary mb-4">
+        <div class="card-body text-primary">
+          <h5 class="card-title text-center">TOTAL CATEGORY</h5>
+          <div class="content">
+            <div style="font-size: 40px;">{{categ}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row1 d-flex justify-content-around">
+      
+      <div class="card border-primary mb-4">
+        <div class="card-body text-primary">
+          <h5 class="card-title text-center" >TOTAL PRODUCT</h5>
+          <div class="content">
+            <div style="font-size: 40px;">{{prod}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="card border-primary mb-4">
+        <div class="card-body text-primary">
+          <h5 class="card-title text-center">TOTAL SALES</h5>
+          <div class="content">
+            <div style="font-size: 40px;">{{sales}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>
+{% endblock %}

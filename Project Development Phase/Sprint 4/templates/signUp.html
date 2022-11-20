@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>Sign Up</title>
+</head>
+</html>
+
+{% extends 'base.html' %}
+
+
+{% block head %}
+<!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/signUp.css') }}" />
+
+    <script type = "text/javascript">
+         function validate()
+          {
+            if( document.myForm.first_name.value == "" ) {
+               alert( "Please provide your First name!" );
+               document.myForm.first_name.focus() ;
+               return false;
+            }
+            if( document.myForm.last_name.value == "" ) {
+               alert( "Please provide your Last name!" );
+               document.myForm.last_name.focus() ;
+               return false;
+            }
+            if( document.myForm.email.value == "" ) {
+               alert( "Please provide your Email!" );
+               document.myForm.email.focus() ;
+               return false;
+            }
+            if( document.myForm.password.value == "" ) {
+               alert( "Please provide your Password!" );
+               document.myForm.password.focus() ;
+               return false;
+            }
+            if( document.myForm.password1.value == "" ) {
+               alert( "This Field cannot be empty" );
+               document.myForm.password1.focus() ;
+               return false;
+            }
+            if( document.myForm.password.value != document.myForm.password1.value) {
+               alert( "Passwords does not match" );
+               
+               return false;
+            }
+            return( true );
+         }
+         
+   </script>
+   
+  {% endblock %}
+  {% block body %}
+    <div class="signUp">
+      <div class="container-well container-shadow">
+        <div class="container  flex-container">
+          <div class="left-content d-flex flex-column">
+            <div class="image">
+              <img src="../static/assets/signup1.png" alt="signup-image">
+            </div>
+          </div>
+          <div class="form mt-4 mb-4">
+            <form action = "{{url_for('signUp')}}" name = "myForm" method = "POST" onsubmit = "return(validate());">
+              
+              <div class="row">
+                <div class="col-xl-6">
+                  <div class="mb-3">
+                    <label class="form-label" >First Name</label>
+                    <input type="text" class="form-control" name="first_name">
+                  </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="mb-3">
+                      <label class="form-label" >Last Name</label>
+                      <input type="text" class="form-control" name="last_name">
+                    </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Email</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" >Confirm Password</label>
+                <input type="password" class="form-control" name="password1">
+              </div>
+              
+              <input type="submit" class="btn btn-blue mt-2" value="Sign Up">
+             
+              
+            </form>
+            <br>
+            <div class="d-flex flex-row">
+              Already have an account ?
+              <div>
+                <a class="ms-1" href="./logIn">Log In</a>
+              </div>
+            </div>
+            {% with messages = get_flashed_messages() %}  
+              {% if messages %}  
+                {% for message in messages %}  
+                    <p>{{ message }}</p>  
+                {% endfor %}  
+              {% endif %}  
+            {% endwith %}  
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
